@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - 1.9
+  - tip
+
+sudo: false
+
+install:
+  - go get -u -x github.com/golang/dep/cmd/dep
+  - dep ensure -v
+  - go install -v ./...
+
+script:
+  - go test ./...
