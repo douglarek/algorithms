@@ -48,3 +48,12 @@ func TestSelectInts(t *testing.T) {
 		})
 	}
 }
+
+func benchmarkSelect(a aint, b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Select(a)
+	}
+}
+
+func BenchmarkSelect1(b *testing.B) { benchmarkSelect([]int{10, 0, 1, 3, 2, 4, 5}, b) }
+func BenchmarkSelect2(b *testing.B) { benchmarkSelect([]int{-1, 0, 11, 3, 2, 74, 5}, b) }
